@@ -4,6 +4,7 @@
 #include "question/findStockBuySell.hpp"
 #include "question/majorityElement.hpp"
 #include "question/lruCache.hpp"
+#include "question/spiralOrder.hpp"
 
 using namespace std;
 
@@ -31,6 +32,9 @@ int main() {
 	cout << cache->Get(1) << endl;
 	cout << cache->Get(2) << endl;
 	cout << cache->Get(3) << endl;
+
+	vector<vector<int>> matrix{ {1,2,3, 4}, {5, 6, 7,8}, {9,10,11,12} };
+	vector<int> result = spiralOrder::getSpiralOrder(matrix);
 
 	return 0;
 }
