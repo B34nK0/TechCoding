@@ -2,7 +2,7 @@
 
 class ListNode {
 public :
-    ListNode* next = null;
+    ListNode* next = nullptr;
 };
 
 class cycleListSolution {
@@ -15,7 +15,7 @@ public:
         ListNode* p1 = head;
         ListNode* p2 = head->next->next;
         while (p1 != p2) {
-            if (nullptr == p2 || nullptr = p2->next) {
+            if (nullptr == p2 || nullptr == p2->next) {
                 return false;
             }
 
