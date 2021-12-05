@@ -1,3 +1,7 @@
+#include <assert.h>
+#include <vector>
+#include <atomic>
+
 template <typename T>
 class SPSCQueue {
 private:
