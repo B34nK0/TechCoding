@@ -24,7 +24,7 @@
     <ProjectGuid>{8bd36fac-0e89-4039-a3a8-3aff88818e61}</ProjectGuid>
     <RootNamespace>leeCode</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>leetCode</ProjectName>
+    <ProjectName>TecCoding</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -147,6 +147,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="question\findStockBuySell.hpp" />
+    <ClInclude Include="question\hasCycle.hpp" />
     <ClInclude Include="question\majorityElement.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
