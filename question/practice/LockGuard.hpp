@@ -1,3 +1,5 @@
+// 局部锁
+
 struct mutex {
     void Lock(){}
     void Unlock(){}

@@ -1,7 +1,8 @@
+//线程安全的queue
+
 #include <queue>
 #include <mutex>
 #include <condition_variable>
-//线程安全的queue
 template<typename T>
 class Queue {
 private:

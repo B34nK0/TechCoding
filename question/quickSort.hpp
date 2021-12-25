@@ -1,3 +1,5 @@
+// 经典快排
+
 #include <vector>
 
 class quickSort {

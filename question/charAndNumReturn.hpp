@@ -1,8 +1,6 @@
+// 灏嗘暟瀛楁斁鍒板瓧绗︿覆鍚庤竟
 #include <string>
 #include <queue>
-//
-//给定一个包含连续字母、连续数字即空格的字符串
-//实现字母按出现顺序而数字按小到大排在字母后
 
 using namespace std;
 class charAndNumReturn {
