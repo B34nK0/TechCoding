@@ -24,12 +24,21 @@
     <ClCompile Include="question\lruCache.hpp">
       <Filter>头文件\question</Filter>
     </ClCompile>
+    <ClCompile Include="question\maxPathSum.hpp">
+      <Filter>头文件</Filter>
+    </ClCompile>
+    <ClCompile Include="question\spiralOrder.hpp">
+      <Filter>头文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="question\findStockBuySell.hpp">
       <Filter>头文件\question</Filter>
     </ClInclude>
     <ClInclude Include="question\majorityElement.hpp">
+      <Filter>头文件\question</Filter>
+    </ClInclude>
+    <ClInclude Include="question\hasCycle.hpp">
       <Filter>头文件\question</Filter>
     </ClInclude>
   </ItemGroup>
