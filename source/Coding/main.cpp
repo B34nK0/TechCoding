@@ -6,14 +6,23 @@
 #include "question/lruCache.hpp"
 #include "question/spiralOrder.hpp"
 #include "question/genMatrix.hpp"
+#include "question/ReverseBits.hpp"
+#include "question/Pow.hpp"
 
 using namespace std;
 
 int main() {
 
-	vector<int> stockPrices{1,3,4,2,7,8};
+	double powRes = Pow::CalculatePow(7.0, 5);
+
+	uint32_t orgNum = 123456;
+	uint32_t num = ReverseBits::Reverse(orgNum);
+
+	vector<int> stockPrices{3,3,5,0,0,3,1,4};
 
 	
+	cout << FindStockBuySell::MaxProfit(stockPrices);
+
 	cout << FindStockBuySell::FindResult(stockPrices) << endl;
 
 
