@@ -25,13 +25,13 @@ public:
 };
 
 using namespace std;
-class maxPathSum {
+class MaxPathSum {
 private:
 	int _maxSum = 0;
 
 public:
 
-	static int maxSum(TreeNode* treeNode) {
+	static int MaxSum(TreeNode* treeNode) {
 		if (nullptr == treeNode) {
 			return 0;
 		}

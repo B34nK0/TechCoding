@@ -2,17 +2,17 @@
 
 #include <vector>
 
-class quickSort {
+class QuickSort {
 public:
-    static void sortNum(std::vector<int> nums, int l, int r) {
-        int index = (r - l) / 2; 
+    static void SortNum(std::vector<int> nums, int l, int r) {
+        int index = (r - l) / 2;
     }
 
-    static std::vector<int> sort(std::vector<int>& nums) {
+    static std::vector<int> Sort(std::vector<int>& nums) {
         if (nums.size() < 2) {
             return nums;
         }
 
-        sortNum(nums, 0, nums.size());
+        SortNum(nums, 0, nums.size());
     }
-}
+};

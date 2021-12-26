@@ -5,9 +5,9 @@ public :
     ListNode* next = nullptr;
 };
 
-class cycleListSolution {
+class HasCycle {
 public:
-    bool hasCycle(ListNode* head) {
+    bool ListHasCycle(ListNode* head) {
         if (nullptr == head || head->next == nullptr) {
             return false;
         }

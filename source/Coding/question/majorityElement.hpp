@@ -3,10 +3,10 @@
 /// <summary>
 /// 使用摩尔投票方式，找出数组中超过一半的 n/2的数
 /// </summary>
-class majorityElement {
+class MajorityElement {
 public:
 
-	static int findElement(std::vector<int> numbers) {
+	static int FindElement(std::vector<int> numbers) {
 		if (numbers.empty()) {
 			return 0;
 		}

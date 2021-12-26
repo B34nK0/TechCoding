@@ -4,9 +4,9 @@
 #include <vector>
 
 using namespace std;
-class genMatrix {
+class GenMatrix {
 public:
-	static vector<vector<int>> genMatrixByN(int n) {
+	static vector<vector<int>> GenMatrixByN(int n) {
 		vector<vector<int>> matrix(n, vector<int>(n));
 
 		int left = 0, right = n - 1, top = 0, bottom = n - 1;

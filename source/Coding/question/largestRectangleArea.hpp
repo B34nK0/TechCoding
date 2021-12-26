@@ -3,9 +3,9 @@
 #include <stack>
 
 using namespace std;
-class largestRectangleArea {
+class LargestRectangleArea {
 public :
-	int static getResult(vector<int>& heights) {
+	int static GetResult(vector<int>& heights) {
 		if (heights.size() <= 0) {
 			return 0;
 		}

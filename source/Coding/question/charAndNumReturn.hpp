@@ -3,9 +3,9 @@
 #include <queue>
 
 using namespace std;
-class charAndNumReturn {
+class CharAndNumReturn {
 public :
-	static string getCharAndNumReturn(string content) {
+	static string GetCharAndNumReturn(string content) {
 		priority_queue<char,vector<char>, greater<char>> numbers;
 		string result;
 		for (char s : content) {

@@ -2,9 +2,9 @@
 
 #include <vector>
 using namespace std;
-class spiralOrder {
+class SpiralOrder {
 public :
-	static vector<int> getSpiralOrder(vector<vector<int>>& matrix) {
+	static vector<int> GetSpiralOrder(vector<vector<int>>& matrix) {
         int height = matrix.size();
         if (0 == height) {
             return vector<int>(0);

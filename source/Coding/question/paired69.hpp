@@ -5,9 +5,9 @@
 #include<deque>
 using namespace std;
 
-class paired69 {
+class Paired69 {
 public:
-	static string getPaired69(string s) {
+	static string GetPaired69(string s) {
 		if (s.empty()) {
 			return "";
 		}

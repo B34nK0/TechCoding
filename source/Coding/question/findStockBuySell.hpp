@@ -4,9 +4,9 @@
 using namespace std;
 
 //给出股票的价格数组，找出最佳买卖点,得出收益
-class findStockBuySell {
+class FindStockBuySell {
 public:
-	static int findResult(vector<int> prices) {
+	static int FindResult(vector<int> prices) {
 		if (prices.empty()) {
 			return 0;
 		}
@@ -21,7 +21,7 @@ public:
 	}
 
 	//动态规划
-	static int sumBuySell(vector<int> prices) {
+	static int SumBuySell(vector<int> prices) {
 		if (prices.empty()) {
 			return 0;
 		}
@@ -44,7 +44,7 @@ public:
 	}
 
 	//贪心算法
-	static int sumBuySell2(vector<int> prices) {
+	static int SumBuySell2(vector<int> prices) {
 		if (prices.empty()) {
 			return 0;
 		}
@@ -57,5 +57,28 @@ public:
 		}
 
 		return result;
+	}
+
+	//进阶，最多两次交易，计算最大收益
+	static int MaxProfit(vector<int>& prices) {
+		int min_so_far = numeric_limits<int>::max();
+		vector<int> profit_first_trade(prices.size(), 0);
+		int max_profit = 0;
+
+		//计算每个每个位置上产生的最大收益值
+		for (int i = 0; i < prices.size(); ++i) {
+			min_so_far = min(min_so_far, prices[i]);
+			max_profit = max(max_profit, prices[i] - min_so_far);
+			profit_first_trade[i] = max_profit;
+		}
+
+		int max_so_far = numeric_limits<int>::min();
+
+		for (int i = prices.size() - 1; i > 0; --i) {
+			max_so_far = max(prices[i], max_so_far);
+			max_profit = max(max_profit, max_so_far - prices[i] + profit_first_trade[i - 1]);
+		}
+
+		return max_profit;
 	}
 };
