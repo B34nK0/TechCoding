@@ -1,9 +1,6 @@
 #pragma once
 
-class ListNode {
-public :
-    ListNode* next = nullptr;
-};
+#include <CommonStruct.h>
 
 class HasCycle {
 public:

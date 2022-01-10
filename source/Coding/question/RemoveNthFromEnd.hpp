@@ -1,9 +1,6 @@
 #pragma once
 
-class ListNode {
-public:
-	ListNode* next = nullptr;
-};
+#include <CommonStruct.h>
 
 /// <summary>
 /// 移除单向链表倒数第n个节点
