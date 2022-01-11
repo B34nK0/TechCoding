@@ -1,17 +1,23 @@
 #include <vector>
 #include <iostream>
 
-#include "question/findStockBuySell.hpp"
-#include "question/majorityElement.hpp"
-#include "question/lruCache.hpp"
-#include "question/spiralOrder.hpp"
-#include "question/genMatrix.hpp"
+#include "question/FindStockBuySell.hpp"
+#include "question/MajorityElement.hpp"
+#include "question/LruCache.hpp"
+#include "question/SpiralOrder.hpp"
+#include "question/GenMatrix.hpp"
 #include "question/ReverseBits.hpp"
 #include "question/Pow.hpp"
+#include "question/QuickSort.hpp"
 
 using namespace std;
 
 int main() {
+
+
+	vector<int> quickSort{ 2 - 1, 2, -8, -10 };
+	QuickSort::Sort(quickSort);
+
 
 	double powRes = Pow::CalculatePow(7.0, 5);
 
