@@ -31,7 +31,7 @@ public:
 
     //获取分隔符
     static int partition(std::vector<int>& nums, int l, int r) {
-        int i = rand() % (r - l + 1)+1; // 随机选一个作为我们的主元
+        int i = rand() % (r - l + 1)+ l ; // 随机选一个作为我们的主元
         std::swap(nums[r], nums[i]);
         return partition_swap(nums, l, r);
     }

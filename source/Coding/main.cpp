@@ -9,10 +9,13 @@
 #include "question/ReverseBits.hpp"
 #include "question/Pow.hpp"
 #include "question/QuickSort.hpp"
+#include "question/LengthOfLongestSubstring.hpp"
 
 using namespace std;
 
 int main() {
+	string getMaxSubLength = "dvdf";
+	int data = LengthOfLongestSubstring::GetMaxLength(getMaxSubLength);
 
 
 	vector<int> quickSort{ 2 - 1, 2, -8, -10 };
