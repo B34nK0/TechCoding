@@ -1,5 +1,8 @@
 /*
 LRU缓存机制
+使用pair存储kv对
+采用list存储pair，实现lru的访问顺序，即最近访问的放置表头
+采用hashmap记录key 映射 到链表节点的迭代器
 */
 
 #include <list>

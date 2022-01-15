@@ -24,6 +24,7 @@ public:
 			}
 
 			//移动右指针，如果hash表没有该字符，那么将其放到hash表
+			//有该字符的话，表明当前字符与窗口内的子串存在相同字符，需要跳出循环计算窗口子串的长度
 			while (ri < s.length() && !occ.count(s[ri])) {
 				occ.insert(s[ri]);
 				++ri;
