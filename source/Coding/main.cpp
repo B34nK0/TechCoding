@@ -10,10 +10,14 @@
 #include "question/Pow.hpp"
 #include "question/QuickSort.hpp"
 #include "question/LengthOfLongestSubstring.hpp"
+#include "question/ThreeSum.hpp"
 
 using namespace std;
 
 int main() {
+	vector<int> nums = { -1,0,1,2,-1,-4 };
+	auto res = ThreeSum::Sum(nums);
+
 	string getMaxSubLength = "dvdf";
 	int data = LengthOfLongestSubstring::GetMaxLength(getMaxSubLength);
 
