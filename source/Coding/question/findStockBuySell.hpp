@@ -4,6 +4,7 @@
 using namespace std;
 
 //给出股票的价格数组，找出最佳买卖点,得出收益
+//leetcode 121
 class FindStockBuySell {
 public:
 	static int FindResult(vector<int> prices) {
@@ -13,7 +14,9 @@ public:
 		int result = 0;
 		int minPrice = prices[0];
 		for (int i = 1; i < prices.size(); ++i) {
+			//当前位置与最小值的差即为收益
 			result = max(result, prices[i] - minPrice);
+			//记录产生的最小值作为买价
 			minPrice = min(minPrice, prices[i]);
 		}
 
@@ -65,17 +68,23 @@ public:
 		vector<int> profit_first_trade(prices.size(), 0);
 		int max_profit = 0;
 
-		//计算每个每个位置上产生的最大收益值
+		//顺排
 		for (int i = 0; i < prices.size(); ++i) {
+			//当前位置上的最小价格可以当买价
 			min_so_far = min(min_so_far, prices[i]);
+			//当前位置上的最大收益=当前价-之前的最低价
 			max_profit = max(max_profit, prices[i] - min_so_far);
+			//存储每个位置产生的最高收益
 			profit_first_trade[i] = max_profit;
 		}
 
 		int max_so_far = numeric_limits<int>::min();
 
+		//倒排
 		for (int i = prices.size() - 1; i > 0; --i) {
+			//当前位置上的最大价格作为卖价
 			max_so_far = max(prices[i], max_so_far);
+			//计算当前位置与当前位置之前产生交易的最大收益和
 			max_profit = max(max_profit, max_so_far - prices[i] + profit_first_trade[i - 1]);
 		}
 
