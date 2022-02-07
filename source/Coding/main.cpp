@@ -11,10 +11,14 @@
 #include "question/QuickSort.hpp"
 #include "question/LengthOfLongestSubstring.hpp"
 #include "question/ThreeSum.hpp"
+#include "question/Trap.hpp"
 
 using namespace std;
 
 int main() {
+	vector<int> height = { 0,1,0,2,1,0,1,3,2,1,2,1 };
+	int ans = Trap::GetTrapResult(height);
+
 	vector<int> nums = { -1,0,1,2,-1,-4 };
 	auto res = ThreeSum::Sum(nums);
 
