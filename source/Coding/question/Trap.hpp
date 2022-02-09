@@ -49,4 +49,33 @@ public:
 
 		return ans;
 	}
+
+	//采用遍历记录每个位置的左右最高值
+	static int GetTrapResult2(vector<int>& nums) {
+		int n = nums.size();
+		if (n == 0) {
+			return 0;
+		}
+		vector<int> leftMax(n);
+		leftMax[0] = nums[0];
+		for (int i = 1; i < n; ++i) {
+			//左边记录的值与当前高度比
+			leftMax[i] = max(leftMax[i - 1], nums[i]);
+		}
+
+		//从右往左记录右边最大高度
+		vector<int> rightMax(n);
+		rightMax[n - 1] = nums[n - 1];
+		for (int i = n - 2; i >= 0; --i) {
+			//右边记录的值与当前高度比
+			rightMax[i] = max(rightMax[i + 1], nums[i]);
+		}
+
+		int ans = 0;
+		for (int i = 0; i < n; ++i) {
+			//左右高度值的最小值减去当前高度
+			ans += min(leftMax[i], rightMax[i]) - nums[i];
+		}
+		return ans;
+	}
 };

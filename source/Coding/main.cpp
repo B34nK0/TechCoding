@@ -12,10 +12,14 @@
 #include "question/LengthOfLongestSubstring.hpp"
 #include "question/ThreeSum.hpp"
 #include "question/Trap.hpp"
+#include "question/NextPermutation.hpp"
 
 using namespace std;
 
 int main() {
+	vector<int> nums1{1,2,3};
+	NextPermutation::sortNextPermutation(nums1);
+
 	vector<int> height = { 0,1,0,2,1,0,1,3,2,1,2,1 };
 	int ans = Trap::GetTrapResult(height);
 
