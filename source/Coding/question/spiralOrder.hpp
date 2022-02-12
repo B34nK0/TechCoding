@@ -1,3 +1,5 @@
+
+//leetCode 54
 //顺时针输出正方形矩阵的内容
 
 #include <vector>
@@ -11,6 +13,7 @@ public :
         }
 
         int width = matrix[0].size();
+        //确认当前矩阵的边界，从左到右，从上到下，从右到左，从下往上，完成一层顺时针遍历
         int left = 0, right = width - 1, top = 0, bottom = height - 1;
         vector<int> result = vector<int>();
         while (true) {
