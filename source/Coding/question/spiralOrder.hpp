@@ -17,6 +17,7 @@ public :
         int left = 0, right = width - 1, top = 0, bottom = height - 1;
         vector<int> result = vector<int>();
         while (true) {
+            //∂•≤ø
             for (int i = left; i <= right; ++i) {
                 result.push_back(matrix[top][i]);
             }
@@ -24,6 +25,7 @@ public :
             if (top > bottom) {
                 break;
             }
+            //”“≤‡
             for (int i = top; i <= bottom; ++i) {
                 result.push_back(matrix[i][right]);
             }
@@ -31,6 +33,7 @@ public :
             if (right < left) {
                 break;
             }
+            //µ◊≤ø
             for (int i = right; i >= left; --i) {
                 result.push_back(matrix[bottom][i]);
             }
@@ -38,6 +41,7 @@ public :
             if (bottom < top) {
                 break;
             }
+            //◊Û≤‡
             for (int i = bottom; i >= top; --i) {
                 result.push_back(matrix[i][left]);
             }

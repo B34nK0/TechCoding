@@ -1,5 +1,6 @@
 #include <vector>
 #include <iostream>
+#include "CommonStruct.h"
 
 #include "question/FindStockBuySell.hpp"
 #include "question/MajorityElement.hpp"
@@ -13,10 +14,22 @@
 #include "question/ThreeSum.hpp"
 #include "question/Trap.hpp"
 #include "question/NextPermutation.hpp"
-
+#include "question/ReorderList.hpp"
 using namespace std;
 
 int main() {
+	ListNode* l1 = new ListNode();
+	l1->val = 0;
+	ListNode* head = l1;
+	for (int i = 1; i < 5;++i) {
+		ListNode* l2 = new ListNode();
+		l2->val = i;
+		l1->next = l2;
+		l1 = l1->next;
+	}
+
+	ReorderList::GetReorderList(head);
+
 	vector<int> nums1{1,2,3};
 	NextPermutation::sortNextPermutation(nums1);
 
