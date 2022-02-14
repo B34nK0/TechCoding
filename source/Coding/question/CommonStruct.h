@@ -12,6 +12,16 @@ struct ListNode {
 	ListNode(int x, ListNode*) :val(x), next(nullptr) {
 
 	}
+
+	ListNode(int x, int n) :val(x), next(nullptr) {
+		ListNode* head = this;
+		for (int i = 1; i < 5; ++i) {
+			ListNode* l2 = new ListNode();
+			l2->val = i;
+			head->next = l2;
+			head = head->next;
+		}
+	}
 };
 
 struct TreeNode {

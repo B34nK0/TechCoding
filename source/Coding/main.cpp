@@ -15,20 +15,18 @@
 #include "question/Trap.hpp"
 #include "question/NextPermutation.hpp"
 #include "question/ReorderList.hpp"
+#include "question/MergeKLists.hpp"
 using namespace std;
 
 int main() {
-	ListNode* l1 = new ListNode();
-	l1->val = 0;
-	ListNode* head = l1;
-	for (int i = 1; i < 5;++i) {
-		ListNode* l2 = new ListNode();
-		l2->val = i;
-		l1->next = l2;
-		l1 = l1->next;
-	}
+	ListNode* l1 = new ListNode(0, 5);
+	ListNode* l2 = new ListNode(0, 7);
+	vector<ListNode*> kLists = { l1, l2 };
 
-	ReorderList::GetReorderList(head);
+	ListNode* kListRes = MergeKLists::GetResult(kLists);
+
+
+	ReorderList::GetReorderList(l1);
 
 	vector<int> nums1{1,2,3};
 	NextPermutation::sortNextPermutation(nums1);
