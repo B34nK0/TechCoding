@@ -4,17 +4,21 @@
 #include <utility>
 #include <tuple>
 /*
-* k个一组反转链表
+*leetCode 25 k个一组反转链表
+* 给定一个链表，及参数k，将链表按每k个节点为一组进行翻转
+* 1->2->3->4->5 k=2
+* 2->1->4->3->5
 */
 
 using namespace std;
 class ReverseKGroupList {
 public:
-	//返回新的头、尾节点位置
+	//返回反转后的头、尾节点位置
 	static pair<ListNode*, ListNode*> reverseSubList(ListNode* head, ListNode* tail) {
-		//字列表的尾指向的是下一个子列表
+		//将子链表尾节点的下一个节点作为当前的前节点
 		ListNode* prev = tail->next;
 		ListNode* curr = head;
+		//反转链表
 		while (prev != tail) {
 			ListNode* next = curr->next;
 			curr->next = prev;
