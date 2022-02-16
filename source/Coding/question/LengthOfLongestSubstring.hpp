@@ -3,7 +3,10 @@
 #include <vector>
 #include <unordered_set>
 /*
+* leetCode 3 
 获取字符串中最长不重复字符子串的长度
+输入: s = "abcabcbb"
+输出: 3
 */
 
 using namespace std;
