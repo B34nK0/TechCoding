@@ -25,40 +25,62 @@ public:
 		}
 	}
 
+	//static ListNode* GetReverseRes(ListNode* head, int left, int right) {
+	//	if (left > right) return nullptr;
+	//	if (!head) return nullptr;
+
+	//	//先找出待选择的子链头节点跟尾节点
+	//	ListNode* subHead = nullptr, * subTail = nullptr, *subListPre = nullptr;
+	//	ListNode* tail = head;
+	//	while (tail) {
+	//		//先找出子链表头
+	//		if (tail->val == left) {
+	//			subHead = tail;
+	//		}
+	//		else if(!subHead){
+	//			subListPre = tail;
+	//		}
+	//		//子链表尾必须是有了表头之后
+	//		if (tail->val == right && subHead) {
+	//			subTail = tail;
+	//		}
+	//		tail = tail->next;
+	//	}
+	//	//
+	//	if (!subHead || !subTail) {
+	//		return nullptr;
+	//	}
+	//	//反转子链表,返回新的表头
+	//	reverseSubList(subHead, subTail);
+	//	if (!subListPre) {
+	//		head = subTail;
+	//	}
+	//	else {
+	//		subListPre->next = subTail;
+	//	}
+
+	//	return head;
+	//}
+
+
 	static ListNode* GetReverseRes(ListNode* head, int left, int right) {
-		if (left > right) return nullptr;
-		if (!head) return nullptr;
+		ListNode* curHead = new ListNode(-1);
+		curHead->next = head;
 
-		//先找出待选择的子链头节点跟尾节点
-		ListNode* subHead = nullptr, * subTail = nullptr, *subListPre = nullptr;
-		ListNode* tail = head;
-		while (tail) {
-			//先找出子链表头
-			if (tail->val == left) {
-				subHead = tail;
-			}
-			else if(!subHead){
-				subListPre = tail;
-			}
-			//子链表尾必须是有了表头之后
-			if (tail->val == right && subHead) {
-				subTail = tail;
-			}
-			tail = tail->next;
-		}
-		//
-		if (!subHead || !subTail) {
-			return nullptr;
-		}
-		//反转子链表,返回新的表头
-		reverseSubList(subHead, subTail);
-		if (!subListPre) {
-			head = subTail;
-		}
-		else {
-			subListPre->next = subTail;
+		ListNode* pre = curHead;
+		for (int i = 0; i < left - 1; ++i) {
+			pre = pre->next;
 		}
 
-		return head;
+		ListNode* cur = pre->next;
+		ListNode* next = nullptr;
+		for (int i = 0; i < right - left; ++i) {
+			next = cur->next;
+			cur->next = next->next;
+			next->next = pre->next;
+			pre->next = next;
+		}
+
+		return curHead->next;
 	}
 };
