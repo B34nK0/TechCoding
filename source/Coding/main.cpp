@@ -17,10 +17,17 @@
 #include "question/ReorderList.hpp"
 #include "question/MergeKLists.hpp"
 #include "question/ReverseBetween.hpp"
+#include "question/BuildTree.hpp"
 
 using namespace std;
 
 int main() {
+
+	vector<int> preorder = { 3,9,20,15,7 };
+	vector<int> inorder = { 9,3,15,20,7 };
+	BuildTree buildTree ;
+	TreeNode* tree = buildTree.buildTree(preorder, inorder);
+
 	ListNode* l1 = new ListNode(0, 5);
 
 	ReverseBetween::GetReverseRes(l1, 1, 1);

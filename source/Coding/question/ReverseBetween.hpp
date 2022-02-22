@@ -64,14 +64,14 @@ public:
 
 
 	static ListNode* GetReverseRes(ListNode* head, int left, int right) {
-		ListNode* curHead = new ListNode(-1);
-		curHead->next = head;
-
-		ListNode* pre = curHead;
+		//遍历到子链的前一个节点，第left个节点，即边界为left-1
+		ListNode* pre = head;
 		for (int i = 0; i < left - 1; ++i) {
 			pre = pre->next;
 		}
 
+
+		//由子链第一个节点开始，替换当前cur的下一个节点到pre的下个节点，类似形式压栈方式
 		ListNode* cur = pre->next;
 		ListNode* next = nullptr;
 		for (int i = 0; i < right - left; ++i) {
@@ -81,6 +81,6 @@ public:
 			pre->next = next;
 		}
 
-		return curHead->next;
+		return head;
 	}
 };
