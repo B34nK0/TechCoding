@@ -18,7 +18,7 @@ public:
 	unordered_map<int, int> nodeIndex;
 
 	//递归，自底向上构建树,当数组为空时，说明已经没有叶子节点了
-	TreeNode* getChildren(vector<int>& preorder, vector<int>& inorder, int preorder_left, int preorder_right, int inorder_left, int inorder_right) {
+	TreeNode* getChildren(const vector<int>& preorder, const  vector<int>& inorder, int preorder_left, int preorder_right, int inorder_left, int inorder_right) {
 		if (preorder_left > preorder_right) {
 			return nullptr;
 		}
@@ -30,7 +30,7 @@ public:
 		int inorder_root = nodeIndex[preorder[preorder_root]];
 
 		//构建当前层的节点用于返回给上层，作为上层的子节点
-		TreeNode* root = new TreeNode(preorder_root);
+		TreeNode* root = new TreeNode(preorder[preorder_root]);
 		//得到左子树的长度
 		int left_sub_tree = inorder_root - inorder_left;
 
@@ -50,4 +50,5 @@ public:
 
 		return getChildren(preorder, inorder, 0, n - 1, 0, n - 1);
 	}
+
 };

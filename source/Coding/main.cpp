@@ -18,10 +18,14 @@
 #include "question/MergeKLists.hpp"
 #include "question/ReverseBetween.hpp"
 #include "question/BuildTree.hpp"
+#include "test.h"
 
 using namespace std;
 
 int main() {
+
+	test t;
+	t.TestMap();
 
 	vector<int> preorder = { 3,9,20,15,7 };
 	vector<int> inorder = { 9,3,15,20,7 };
