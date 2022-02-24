@@ -1,7 +1,9 @@
 #include <utility>
 
-
+#include "CommonStruct.h"
 /*
+* 
+* leetCode 124
 计算二叉树的最大路径和
 
 如：
@@ -15,59 +17,40 @@
 
 */
 
-class TreeNode {
-public:
-	int value;
-
-	TreeNode* left;
-
-	TreeNode* right;
-};
 
 using namespace std;
 class MaxPathSum {
-private:
-	int _maxSum = 0;
 
 public:
+	static int maxSum;
+
 
 	static int MaxSum(TreeNode* treeNode) {
-		if (nullptr == treeNode) {
-			return 0;
-		}
-
-
+		maxGain(treeNode);
+		return maxSum;
 	}
 
-private:
-	/// <summary>
-	/// 计算每个节点的贡献值
-	/// </summary>
-	/// <param name="treeNode"></param>
-	/// <returns></returns>
-	int maxGain(TreeNode* treeNode) {
+	static int maxGain(TreeNode* treeNode) {
 		if (nullptr == treeNode) {
 			return 0;
 		}
 
-		//当前节点的贡献值 等于 左右节点的贡献值，为负的节点不计算入内
-		int curGain = treeNode->value;
+		//当前节点的路径值 等于 当前值 + 左右节点的贡献值，为负的节点不计算入内
+		int curGain = treeNode->val;
 
 		//递归计算左右节点的贡献值
-		int leftGain = maxGain(treeNode->left);
-		if (leftGain > 0) {
-			curGain += leftGain;
-		}
+		int leftGain = max(maxGain(treeNode->left), 0);
+		curGain += leftGain;
 
-		int rightGain = maxGain(treeNode->right);
-		if (rightGain > 0) {
-			curGain += rightGain;
-		}
+		int rightGain = max(maxGain(treeNode->right), 0);
+		curGain += rightGain;
 
-		//最大路径和 当前节点为负节点时， 累加左右节点仍然为负的情况，即不可计算入内
-		_maxSum = max(_maxSum, _maxSum + curGain);
+		//与记录的最大路径值比较
+		maxSum = max(maxSum, curGain);
 
-		//返回左中， 由还是 右中节点
-		return treeNode->value + max(leftGain, rightGain);
+		//当前节点的贡献值等于当前值+左右子节点的最大贡献值
+		return treeNode->val + max(leftGain, rightGain);
 	}
 };
+
+int MaxPathSum::maxSum = INT_MIN;;

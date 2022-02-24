@@ -19,10 +19,17 @@
 #include "question/ReverseBetween.hpp"
 #include "question/BuildTree.hpp"
 #include "test.h"
+#include "question/MaxPathSum.hpp"
 
 using namespace std;
 
 int main() {
+
+	TreeNode* binaryTree = new TreeNode(1);
+	binaryTree->left = new TreeNode(2);
+	binaryTree->right = new TreeNode(3);
+
+	int max = MaxPathSum::MaxSum(binaryTree);
 
 	test t;
 	t.TestMap();
