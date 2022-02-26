@@ -20,10 +20,14 @@
 #include "question/BuildTree.hpp"
 #include "test.h"
 #include "question/MaxPathSum.hpp"
+#include "question/NumIslands.hpp"
 
 using namespace std;
 
 int main() {
+	vector<vector<int>> islands = { {1,0,1,1,1} ,{1,0,1,0,1},{1,1,1,0,1} };
+	int islandsNums = NumIslands::GetNumsOfIslands(islands);
+
 
 	TreeNode* binaryTree = new TreeNode(1);
 	binaryTree->left = new TreeNode(2);

@@ -49,6 +49,7 @@ public:
 		maxSum = max(maxSum, curGain);
 
 		//当前节点的贡献值等于当前值+左右子节点的最大贡献值
+		//将当前左中还是右中的路径提供给父节点
 		return treeNode->val + max(leftGain, rightGain);
 	}
 };
