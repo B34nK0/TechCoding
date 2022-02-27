@@ -21,10 +21,15 @@
 #include "test.h"
 #include "question/MaxPathSum.hpp"
 #include "question/NumIslands.hpp"
+#include "question/FirstMissingPositive.hpp"
 
 using namespace std;
 
 int main() {
+
+	vector<int> orderedNums = { 1,2,0 };
+	int missingPositive = FirstMissingPositive::GetNum(orderedNums);
+
 	vector<vector<int>> islands = { {1,0,1,1,1} ,{1,0,1,0,1},{1,1,1,0,1} };
 	int islandsNums = NumIslands::GetNumsOfIslands(islands);
 
