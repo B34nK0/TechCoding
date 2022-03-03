@@ -42,7 +42,7 @@ public:
 		for (int i = 1; i < intervals.size(); ++i) {
 			//排序后，下一区间的左区间一定大于等于当前区间的左区间，那么下区间的右区间一定大于当前区间的左区间
 			//如果当前区间的右区间大于等于下一区间的左区间，那么说明两者有交集
-			if (curr[0] <= intervals[i][1] && intervals[i][0] <= curr[1]) {
+			if ( intervals[i][0] <= curr[1]) {
 				curr[0] = min(curr[0], intervals[i][0]);
 				curr[1] = max(curr[1], intervals[i][1]);
 			}

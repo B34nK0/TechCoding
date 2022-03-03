@@ -22,10 +22,19 @@
 #include "question/MaxPathSum.hpp"
 #include "question/NumIslands.hpp"
 #include "question/FirstMissingPositive.hpp"
+#include "question/MinStack.hpp"
 
 using namespace std;
 
 int main() {
+
+	MinStack minStack;
+	minStack.push(-2);
+	minStack.push(0);
+	minStack.push(-3);
+	minStack.getMin();
+	minStack.pop();
+	minStack.getMin();
 
 	vector<int> orderedNums = { 1,2,0 };
 	int missingPositive = FirstMissingPositive::GetNum(orderedNums);
