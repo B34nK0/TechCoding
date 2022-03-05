@@ -23,10 +23,13 @@
 #include "question/NumIslands.hpp"
 #include "question/FirstMissingPositive.hpp"
 #include "question/MinStack.hpp"
+#include "question/MinWindow.hpp"
 
 using namespace std;
 
 int main() {
+	MinWindow minWindow;
+	string adadf = minWindow.GetRes("a","a");
 
 	MinStack minStack;
 	minStack.push(-2);
