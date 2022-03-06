@@ -24,10 +24,32 @@
 #include "question/FirstMissingPositive.hpp"
 #include "question/MinStack.hpp"
 #include "question/MinWindow.hpp"
+#include "question/SortOddEvenList.hpp"
 
 using namespace std;
 
 int main() {
+	ListNode* oddEvenList = new ListNode(1);
+
+	ListNode* currOddEvenHead = oddEvenList;
+
+	currOddEvenHead->next = new ListNode(8);
+	currOddEvenHead = currOddEvenHead->next;
+	currOddEvenHead->next = new ListNode(3);
+	currOddEvenHead = currOddEvenHead->next;
+	currOddEvenHead->next = new ListNode(6);
+	currOddEvenHead = currOddEvenHead->next;
+	currOddEvenHead->next = new ListNode(5);
+	currOddEvenHead = currOddEvenHead->next;
+	currOddEvenHead->next = new ListNode(4);
+	currOddEvenHead = currOddEvenHead->next;
+	currOddEvenHead->next = new ListNode(7);
+	currOddEvenHead = currOddEvenHead->next;
+	currOddEvenHead->next = new ListNode(2);
+	currOddEvenHead = currOddEvenHead->next;
+	
+	SortOddEvenList::Sort(oddEvenList);
+
 	MinWindow minWindow;
 	string adadf = minWindow.GetRes("a","a");
 
