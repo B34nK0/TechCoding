@@ -2,6 +2,10 @@
 
 #include <CommonStruct.h>
 
+/*
+leetCode 141 环形链表
+采用快慢指针的方式，当快慢指针相遇时说明有环，当快指针为null时说明不成环
+*/
 class HasCycle {
 public:
     bool ListHasCycle(ListNode* head) {
