@@ -4,14 +4,15 @@
 #include <stack>
 
 using namespace std;
+
+/*
+leetCode 20 ÓÐÐ§À¨ºÅ
+*/
+
 class MatchParentTheses {
 public:
 	static bool IsOpen(char c) {
 		return c == '(' || c == '[' || c == '{';
-	}
-
-	static bool IsClose(char c) {
-		return c == ')' || c == ']' || c == '}';
 	}
 
 	static char GetClose(char c) {
