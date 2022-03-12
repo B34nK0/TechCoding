@@ -1,4 +1,5 @@
 /*
+* leetCode 102
 按层次输出二叉树节点
 */
 
@@ -10,6 +11,33 @@ using namespace std;
 
 class LevelOrder {
 public:
+	vector<vector<int>> GetRes(TreeNode* root) {
+		vector<vector<int>> result;
+		if (nullptr == root) return result;
+
+		queue<TreeNode*> levelNode;
+		levelNode.push(root);
+		while (!levelNode.empty()) {
+			//当前层次的节点数
+			int levelNodeNum = levelNode.size();
+			//只获取队列里的n个节点，剩余的是当前层次节点的子节点
+			vector<int> level = {};
+			for (int i = 0; i < levelNodeNum; ++i) {
+				TreeNode* node = levelNode.front();
+				levelNode.pop();
+				level.push_back(node->val);
+				if (node->left) {
+					levelNode.push(node->left);
+				}
+				if (node->right) {
+					levelNode.push(node->right);
+				}
+			}
+			result.push_back(level);
+		}
+		return result;
+	}
+
 	vector<vector<int>> ConvertTreeNode(TreeNode* root) {
 		vector<vector<int>> result;
 		if (nullptr == root) return result;
