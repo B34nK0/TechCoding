@@ -15,10 +15,10 @@ class MaxSubArray {
 public:
 	//已中点m划分 [l,r]数组为左右区间
 	struct Status {
-		//lsum 左区间最大子段和
-		//rsum 右区间最大子段和
-		//msum lr区间最大子段和
-		//isum lr 区间和
+		//lsum 最大左子段和
+		//rsum 最大右子段和
+		//msum 区间最大子段和
+		//isum 区间和
 		int lSum, rSum, mSum, iSum;
 
 		Status(int lSum, int rSum, int mSum, int iSum) {
@@ -31,9 +31,14 @@ public:
 
 
 	Status pushUp(Status l, Status r) {
+		//区间和 等于左右子区间和 的总和
 		int iSum = l.iSum + r.iSum;
+		//区间的最大左字段和 等于 max(左区间的最大左子段和，左区间的区间和+右区间的最大左字段和)
 		int lSum = max(l.lSum, l.iSum + r.lSum);
+		//区间的最大右字段和 等于 max(右区间最大右字段和， 右区间和+左区间的最大右字段和)
 		int rSum = max(r.rSum, r.iSum + l.rSum);
+		//最大字段和 横跨两个区间
+		//最大字段和 = max( max(左区间最大子段和， 右区间最大子段和) ,  左右区间的最大字段和 )
 		int mSum = max(max(l.mSum, r.mSum), l.rSum + r.lSum);
 		return Status(lSum, rSum, mSum, iSum);
 	};
