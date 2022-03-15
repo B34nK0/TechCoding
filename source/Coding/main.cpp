@@ -26,10 +26,14 @@
 #include "question/MinWindow.hpp"
 #include "question/SortOddEvenList.hpp"
 #include "question/MaxSubArray.hpp"
+#include "question/FindPeakElement.hpp"
 
 using namespace std;
 
 int main() {
+	vector<long long> peakNums{ -2147483648 };
+	int idx = FindPeakElement::GetRes(peakNums);
+
 	MaxSubArray maxSubArray;
 	vector<int> numsArr{ -2,1,-3,4,-1,2,1,-5,4 };
 	maxSubArray.GetRes(numsArr);
