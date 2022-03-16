@@ -3,10 +3,16 @@
 
 using namespace std;
 
+/*
+* 买卖股票的最佳时机
+*/
 //给出股票的价格数组，找出最佳买卖点,得出收益
-//leetcode 121
 class FindStockBuySell {
 public:
+	//leetcode 121
+	/*
+	* 一次股票交易的最大收益
+	*/
 	static int FindResult(vector<int> prices) {
 		if (prices.empty()) {
 			return 0;
@@ -23,6 +29,10 @@ public:
 		return result;
 	}
 
+	/*
+	leetCode 122
+	不能同时参与多笔交易
+	*/
 	//动态规划
 	static int SumBuySell(vector<int> prices) {
 		if (prices.empty()) {
@@ -34,15 +44,22 @@ public:
 		for (int i = 0; i < n; ++i) {
 			dp[i] = new int[2];
 		}
+		//第0天
+		//不持有股票时的收益
 		dp[0][0] = 0;
+		//持有股票时的收益
 		dp[0][1] = -prices[0];
 		for (int i = 1; i < n; ++i) {
-			//不持有时的收益
+			//当前点位时
+			// 
+			// 不持有时的收益  
+			// 比较 前一个点位不持有收益  前一点位持有时当前点位卖出（+price）收益
 			dp[i][0] = max(dp[i - 1][0], dp[i - 1][1] + prices[i]);
 			//持有时的收益
+			// 比较 前一个点位持有收益  前一点位不持有时当前点位买入（-price）收益
 			dp[i][1] = max(dp[i - 1][1], dp[i - 1][0] - prices[i]);
 		}
-		//不持有时的收益
+		//不持有时的收益明显大于持有时的收益
 		return dp[n-1][0];
 	}
 
