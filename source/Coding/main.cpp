@@ -29,9 +29,13 @@
 #include "question/FindPeakElement.hpp"
 #include "question/BackToOrigin.hpp"
 
+#include "DeferMacro.hpp"
+
 using namespace std;
 
 int main() {
+
+	int maxRes = Max(-1, 2);
 
 	int step = BackToOrigin::GetNums(2);
 	step = BackToOrigin::GetNums(3);
