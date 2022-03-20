@@ -27,10 +27,16 @@
 #include "question/SortOddEvenList.hpp"
 #include "question/MaxSubArray.hpp"
 #include "question/FindPeakElement.hpp"
+#include "question/BackToOrigin.hpp"
 
 using namespace std;
 
 int main() {
+
+	int step = BackToOrigin::GetNums(2);
+	step = BackToOrigin::GetNums(3);
+	step = BackToOrigin::GetNums(4);
+
 	vector<long long> peakNums{ -2147483648 };
 	int idx = FindPeakElement::GetRes(peakNums);
 
