@@ -49,3 +49,30 @@ static int HJ2() {
 	cout << mp[target] << endl;
 	return mp[target];
 }
+
+//华为机试3 输入n个随机数，去除重复的数只保留一个，并升序返回
+//第一行输入 表示n个随机数 其余行表示随机数值
+// 3
+// 2
+// 2
+// 1
+// 输出 1， 2
+static void HJ3() {
+	cout << "HJ3" << endl;
+
+	int count;
+	cin >> count;
+	vector<int> allNums(count);
+	//连续输入随机数
+	for (int i = 0; i < count; ++i) {
+		cin >> allNums[i];
+	}
+	sort(allNums.begin(), allNums.end());
+	for (int i = 0; 0 < count; ++i) {
+		//去重输出
+		if (i != 0 && allNums[i] == allNums[i - 1]) {
+			continue;
+		}
+		cout << allNums[i] << endl;
+	}
+}

@@ -38,6 +38,8 @@ int main() {
 
 	int hj2Count = HJ2();
 
+	HJ3();
+
 	int maxRes = Max(-1, 2);
 
 	int step = BackToOrigin::GetNums(2);
