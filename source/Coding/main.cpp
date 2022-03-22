@@ -28,12 +28,13 @@
 #include "question/MaxSubArray.hpp"
 #include "question/FindPeakElement.hpp"
 #include "question/BackToOrigin.hpp"
-
 #include "DeferMacro.hpp"
+#include "niuke/huawei.hpp"
 
 using namespace std;
 
 int main() {
+	int hj1count = HJ1();
 
 	int maxRes = Max(-1, 2);
 
