@@ -36,6 +36,8 @@ using namespace std;
 int main() {
 	int hj1count = HJ1();
 
+	int hj2Count = HJ2();
+
 	int maxRes = Max(-1, 2);
 
 	int step = BackToOrigin::GetNums(2);
