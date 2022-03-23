@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include <unordered_map>
+#include <sstream>
 
 using namespace std;
 
@@ -68,11 +69,104 @@ static void HJ3() {
 		cin >> allNums[i];
 	}
 	sort(allNums.begin(), allNums.end());
-	for (int i = 0; 0 < count; ++i) {
+	for (int i = 0; i < count; ++i) {
 		//去重输出
 		if (i != 0 && allNums[i] == allNums[i - 1]) {
 			continue;
 		}
 		cout << allNums[i] << endl;
 	}
+}
+
+/*
+* 判断ip及掩码
+*/
+bool checkMask(string mask) {
+	istringstream iss(mask);
+	string seg;
+	unsigned b = 0;
+	while (getline(iss, seg, '.')) {
+		b = (b << 8) + stoi(seg);
+	}
+	if (!b) return false;
+	b = ~b + 1;
+	if (b == 1) return false;
+	if ((b & (b - 1)) == 0) return true;
+	return false;
+}
+
+bool checkIp(string ip) {
+	int j = 0;
+	istringstream iss(ip);
+	string seg;
+	while (getline(iss, seg, '.'))
+		if (++j > 4 || seg.empty() || stoi(seg) > 255)
+			return false;
+	return j == 4;
+}
+
+bool checkPrivate(string ip) {
+	istringstream iss(ip);
+	string seg;
+	vector<int> v;
+	while (getline(iss, seg, '.')) v.push_back(stoi(seg));
+	if (v[0] == 10) return true;
+	if (v[0] == 172 && (v[1] >= 16 && v[1] <= 31)) return true;
+	if (v[0] == 192 && v[1] == 168) return true;
+	return false;
+}
+
+static void HJ18() {
+	cout << "HJ18" << endl;
+
+	int errCount = 0, a = 0, b = 0, c = 0, d = 0, e = 0, privateCount = 0;
+
+	string input;
+	//获取每行数据
+	while (cin >> input) {
+		istringstream is(input);
+		string add;
+		vector<string> v;
+		//通过istringstream
+		while (getline(is, add, '~')) {
+			v.push_back(add);
+		}
+		//如果子网掩码错误，即不处理ip
+		string ip = v[0], mask = v[1];
+		if (!checkMask(mask)) {
+			errCount++;
+			continue;
+		}
+
+		if (checkIp(ip)) {
+			//检查是否私有
+			if (checkPrivate(ip)) {
+				privateCount++;
+			}
+
+			//对ip进行分类
+			//获取ip的前八位值
+			int first = stoi(ip.substr(0, ip.find_first_of('.')));
+			if (first > 0 && first < 127) {
+				a++;
+			}
+			else if (first > 127 && first < 192) {
+				b++;
+			}
+			else if (first > 191 && first < 224) {
+				c++;
+			}
+			else if (first > 223 && first < 240) {
+				d++;
+			}
+			else if (first > 239 && first < 256) {
+				e++;
+			}
+		}
+		else {
+			errCount++;
+		}
+	}
+
+	cout << a << " " << b << " " << c << " " << d << " " << e << " " << errCount << " " << privateCount << endl;
 }
