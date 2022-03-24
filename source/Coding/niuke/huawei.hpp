@@ -3,6 +3,8 @@
 #include <string>
 #include <unordered_map>
 #include <sstream>
+#include <map>
+#include <deque>
 
 using namespace std;
 
@@ -169,4 +171,34 @@ static void HJ18() {
 	}
 
 	cout << a << " " << b << " " << c << " " << d << " " << e << " " << errCount << " " << privateCount << endl;
+}
+
+
+/*
+输出最新八个错误，如果有重复，统计次数
+*/
+static void HJ19() {
+	string str;
+	map<string, int> result;
+
+	deque<string>deq;
+	while (getline(cin, str)) {
+		//文件名
+		str = str.substr(str.find_last_of('\\') + 1);
+		int pos = str.find_last_of(' ');
+		if (pos > 16) {
+			str = str.substr(pos - 16);
+		}
+
+		if (result.find(str) == result.end()) {
+			deq.push_back(str);
+		}
+		++result[str];
+		if (deq.size() > 8) {
+			deq.pop_front();
+		}
+	}
+	for (auto x : deq) {
+		cout << x << " " << result[x] << endl;
+	}
 }
