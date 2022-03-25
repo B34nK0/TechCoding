@@ -178,6 +178,7 @@ static void HJ18() {
 输出最新八个错误，如果有重复，统计次数
 */
 static void HJ19() {
+	cout << "HJ19" << endl;
 	string str;
 	map<string, int> result;
 
@@ -200,5 +201,51 @@ static void HJ19() {
 	}
 	for (auto x : deq) {
 		cout << x << " " << result[x] << endl;
+	}
+}
+
+/*
+合唱队伍
+输入n个学生
+要求拿掉k个学生形成队伍
+队伍身高中高向两边递减
+求拿掉最少的k
+*/
+static void HJ24() {
+	cout << "HJ24" << endl;
+	int studentCount = 0;
+	while (cin >> studentCount) {
+		vector<int> studentHights(studentCount);
+		for (auto& student : studentHights) {
+			cin >> student;
+		}
+
+		//求每个位置的上升序列
+		vector<int> indexL(studentCount);
+		for (int i = 0; i < studentCount; ++i) {
+			for (int j = 0; j < i; ++j) {
+				if (studentHights[i] > studentHights[j]) {
+					indexL[i] = max(indexL[i], indexL[j]);
+				}
+			}
+			indexL[i] = indexL[i] + 1;
+		}
+		vector<int> indexR(studentCount);
+		for (int i = studentCount - 1; i >= 0; --i) {
+			for (int j = studentCount - 1; j > i; --j) {
+				if (studentHights[i] > studentHights[j]) {
+					indexR[i] = max(indexR[i], indexR[j]);
+				}
+			}
+			indexR[i] = indexR[i] + 1;
+		}
+
+		int max = 0;
+		for (int i = 0; i < studentCount; ++i) {
+			int maxK = indexL[i] + indexR[i] - 1;
+			max = maxK > max ? maxK: max;
+		}
+
+		cout << studentCount - max << endl;
 	}
 }

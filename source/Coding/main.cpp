@@ -34,6 +34,8 @@
 using namespace std;
 
 int main() {
+	HJ24();
+
 	HJ18();
 
 	int hj1count = HJ1();
