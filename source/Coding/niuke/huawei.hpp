@@ -249,3 +249,47 @@ static void HJ24() {
 		cout << studentCount - max << endl;
 	}
 }
+
+/*
+0326 华为od
+给定一个正整数数组，检查数组中是否存在满足规则的数字组合
+规则： A = B + 2C
+
+输入描述:
+
+第一行输出数组的元素个数。
+接下来一行输出所有数组元素，用空格隔开。
+输出描述:
+
+如果存在满足要求的数，在同一行里依次输出规则里A/B/C的取值，用空格隔开。
+如果不存在，输出0。
+*/
+static void HJTest1() {
+	cout << "HJTest1" << endl;
+
+	int count = 0;
+	//数组的个数
+	cin >> count;
+
+	vector<int> nums(count);
+	//通过引用的方式输入数组，这里的个数应该与输入的count一致，不然会越界，不是题目考察范畴
+	for (auto& num : nums) {
+		cin >> num;
+	}
+
+	//暴力求解
+	for (int i = 0; i < count; ++i) {
+		for (int j = 0; j < count; ++j) {
+			for (int k = 0; k < count; ++k) {
+				//不可重复使用数值，需要判断i!=j!=k
+				if (i != j && j != k && nums[i] == nums[j] + 2 * nums[k]) {
+					cout << nums[i] << ' ' << nums[j] << ' ' << nums[k];
+					return ;
+				}
+			}
+		}
+	}
+
+	cout << 0 << endl;
+	return;
+}
