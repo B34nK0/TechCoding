@@ -34,6 +34,8 @@
 using namespace std;
 
 int main() {
+	HJTest2();
+
 	HJTest1();
 
 	HJ24();

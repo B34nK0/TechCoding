@@ -293,3 +293,50 @@ static void HJTest1() {
 	cout << 0 << endl;
 	return;
 }
+
+/*
+0326 华为od
+100个人围成一个圈从1开始报数，输入数m，报到m的人退出，继续从1开始报，报到m继续退出依次下去直到剩余的人小于m不再报数，输出剩下人的位置。
+*/
+static void HJTest2() {
+	cout << "HJTest1" << endl;
+	int m = 0;
+	while (cin >> m) {
+		//采用位图的方式记录哪些人已出圈
+		vector<bool> index(100, true);
+		int remainNums = 100;
+		//当前喊道m数
+		int curM = 1;
+		//如果大于m的话继续出圈
+		while (remainNums >= m) {
+			for (int i = 0; i < 100; ++i) {
+				//
+				if (index[i]) {
+					if (curM == m) {
+						//m从1开始记
+						curM = 1;
+						//出圈
+						index[i] = false;
+						//人数递减
+						remainNums--;
+					}
+					else {
+						curM++;
+					}
+				}
+			}
+		}
+		//数组里为true的即为剩下的，采用逗号分隔输出
+		int outM = 1;
+		string output;
+		for (int i = 0; i < 100; ++i) {
+			if (index[i]) {
+				output += to_string( i + 1);
+				output += ',';
+			}
+		}
+
+		//阶段最后一个字符串
+		cout << output.substr(0, output.length() - 1)<< endl;
+	}
+}
