@@ -34,6 +34,8 @@
 using namespace std;
 
 int main() {
+	bool te = HJTest3("aab", "c*a*b");
+
 	HJTest2();
 
 	HJTest1();

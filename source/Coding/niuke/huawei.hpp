@@ -340,3 +340,39 @@ static void HJTest2() {
 		cout << output.substr(0, output.length() - 1)<< endl;
 	}
 }
+
+/*
+给你一个字符串 s 和一个字符规律 p，请你来实现一个支持 ‘.’ 和 ‘*’ 的正则表达式匹配。
+
+‘.’ 匹配任意单个字符
+‘*’ 匹配零个或多个字符
+所谓匹配，是要涵盖 整个 字符串 s的，而不是部分字符串。
+
+输入n个字符串 一个字符规律
+输出匹配的字符串下标
+
+leetCode 10 正则表达式匹配
+*/
+static bool HJTest3(char* str, char* reg) {
+		//两种特殊情况下的结束
+		//两个字符串同时结束,返回true
+		if ((*str == '\0') && (*reg == '\0'))
+			return true;
+		//两个字符串中有一个先结束，返回false
+		if ((*str == '\0') || (*reg == '\0'))
+			return false;
+
+		if (*reg == '.') {
+			//遇到到 ？ 则算匹配到一个字符，跳过一个位置
+			return HJTest3(str + 1, reg + 1);
+		}
+		else if (*reg == '*') {
+			//遇到*号，匹配0个（str+1,str1不用动），匹配1个（str和str1都往前移动1位），匹配多个（str不用动，str+1）
+			return HJTest3(str + 1, reg) || HJTest3(str + 1, reg + 1) || HJTest3(str, reg + 1);
+		}
+		else if (*str == *reg) {
+			//当前两字符相等，则进行下一个字符的匹配
+			return HJTest3(str + 1, reg + 1);
+		}
+		return false;
+}
