@@ -6,7 +6,7 @@
 /// </summary>
 class MergeTwoLists {
 public:
-	static ListNode* GetMergeRes(ListNode* listA, ListNode* listB) {
+	static ListNode* GetMergeRes(ListNode* l1, ListNode* l2) {
 		if (l1 == nullptr) {
 			return l2;
 		}
