@@ -14,10 +14,11 @@ public:
 		if (currentNode == nullptr) {
 			return true;
 		}
+		//下一节点值与当前头节点指针不相等
 		if (!recursivelyCheck(currentNode->next)) {
 			return false;
 		}
-		//节点值不相等，直接返回错误
+		//当前节点值不相等，直接返回错误
 		if (currentNode->val != frontPoint->val) {
 			return false;
 		}
@@ -28,7 +29,8 @@ public:
 
 	//方法一：采用递归的方式
 	bool check1(ListNode* head) {
-		//
+		//全局记录头结点，当递归都尾节点向上冒时，可同时比对头尾节点的值
+		//frontPoint = frontPoint->next来更新头结点，形成头尾靠拢
 		frontPoint = head;
 		return recursivelyCheck(head);
 	}

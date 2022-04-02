@@ -7,14 +7,8 @@
 class MergeTwoLists {
 public:
 	static ListNode* GetMergeRes(ListNode* l1, ListNode* l2) {
-		if (l1 == nullptr) {
-			return l2;
-		}
-		if (l2 == nullptr) {
-			return l1;
-		}
-		if (l1 == nullptr && l2 == nullptr) {
-			return nullptr;
+		if (l1 != nullptr || l2 != nullptr) {
+			return l1 ? l1 : l2;
 		}
 		//先制造空节点用于指向要返回的结果链表头
 		ListNode ans, * tail = &ans;
@@ -39,7 +33,9 @@ public:
 				l2 = l2->next;
 			}
 
+			//进位
 			curIncr = curValue / 10;
+			//余数为进位后的值
 			curValue = curValue % 10;
 
 			ListNode* n = new ListNode(curValue);
