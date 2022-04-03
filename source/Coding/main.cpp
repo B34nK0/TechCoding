@@ -30,10 +30,15 @@
 #include "question/BackToOrigin.hpp"
 #include "DeferMacro.hpp"
 #include "niuke/huawei.hpp"
+#include "question/MyAtoi.hpp"
 
 using namespace std;
 
 int main() {
+
+	MyAtoi myatoi;
+	myatoi.AtoiConvert("  -42");
+
 	bool te = HJTest3("aab", "c*a*b");
 
 	HJTest2();
