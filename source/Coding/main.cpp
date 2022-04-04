@@ -31,10 +31,16 @@
 #include "DeferMacro.hpp"
 #include "niuke/huawei.hpp"
 #include "question/MyAtoi.hpp"
+#include "question/LFUCache.hpp"
 
 using namespace std;
 
 int main() {
+
+	LFUCache lfuCache(1);
+	lfuCache.Put(10, 10);
+	lfuCache.Put(2, 20);
+	int i = lfuCache.Get(10);
 
 	MyAtoi myatoi;
 	myatoi.AtoiConvert("  -42");

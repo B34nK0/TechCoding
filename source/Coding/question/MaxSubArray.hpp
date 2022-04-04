@@ -13,7 +13,29 @@ using namespace std;
 
 class MaxSubArray {
 public:
-	//已中点m划分 [l,r]数组为左右区间
+
+	/*
+	方法一：动态规划
+	*/
+	int GetMaximum(vector<int>& nums) {
+		if (nums.empty()) {
+			return 0;
+		}
+		int ans = nums[0];
+		int pre = 0;
+		//遍历每个元素，当前元素的子序合等于前序合加上当前值
+		for (auto& num : nums) {
+			//如果前子序合为负的，那么应该以当前值重新作为新的子序
+			pre = max(pre + num, num);
+			ans = max(ans, pre);
+		}
+		return ans;
+	}
+
+	/*
+	方法二：分治法
+	*/
+	//以中点m划分 [l,r]数组为左右区间
 	struct Status {
 		//lsum 最大左子段和
 		//rsum 最大右子段和
