@@ -29,6 +29,51 @@ public:
 		return minHeap.top();
 	}
 
+	//将数组进行小根堆的构建
+	void buildMaxHeap(vector<int>& a, int heapSize) {
+		for (int i = heapSize / 2; i >= 0; --i) {
+			maxHeapify(a, i, heapSize);
+		}
+	}
+
+	void maxHeapify(vector<int>& a, int i, int heapSize) {
+		int l = i * 2 + 1, r = i * 2 + 2, largest = i;
+		if (l < heapSize && a[l] > a[largest]) {
+			largest = l;
+		}
+		if (r < heapSize && a[r] > a[largest]) {
+			largest = r;
+		}
+		if (largest != i) {
+			swap(a[i], a[largest]);
+			maxHeapify(a, largest, heapSize);
+		}
+	}
+
+	void maxHeapify2(vector<int>& a,int i, int heapSize) {
+		for (; (i << 1) + 1 <= heapSize;) {
+			int lson = (i << 1) + 1;
+			int rson = (i << 1) + 2;
+			int largest;
+			if (lson <= heapSize && a[lson] > a[i]) {
+				largest = lson;
+			}
+			else {
+				largest = i;
+			}
+			if (rson <= heapSize && a[rson] > a[largest]) {
+				largest = rson;
+			}
+			if (largest != i) {
+				swap(a[i], a[largest]);
+				i = largest;
+			}
+			else {
+				break;
+			}
+		}
+	}
+
 	int quickSelect(vector<int>& nums, int left, int right, int k) {
 		//查找轴值的位置
 		int kindex = findKindex(nums, left, right);
