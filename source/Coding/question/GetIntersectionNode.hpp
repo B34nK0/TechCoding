@@ -1,7 +1,7 @@
 #pragma once
 
 /// <summary>
-/// leetcode 160
+/// leetcode 160 相交链表
 /// 判断两个链表是否有相交，有则返回相交的节点，无则返回null
 /// </summary>
 /// 
@@ -40,7 +40,7 @@ public:
 		}
 
 		while (ptrA != ptrB) {
-
+			//当链表a到尾部时，置换为b链表的头部
 			if (ptrA == nullptr) {
 				ptrA = headB;
 			}
@@ -48,7 +48,7 @@ public:
 				ptrA = ptrA->next;
 
 			}
-
+			//当链表b到尾部时，置换为a链表的头部
 			if (ptrB == nullptr) {
 				ptrB = headA;
 			}
