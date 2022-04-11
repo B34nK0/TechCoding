@@ -23,6 +23,7 @@ public:
 			//当前值大于栈顶值时，说明栈顶一定不是k个最大元素里的一个
 			if (nums[i] > minHeap.top()) {
 				minHeap.pop();
+				//优先队列会根据权值重新构建树
 				minHeap.push(nums[i]);
 			}
 		}
@@ -31,7 +32,7 @@ public:
 
 	//将数组进行小根堆的构建
 	void buildMaxHeap(vector<int>& a, int heapSize) {
-		for (int i = heapSize / 2; i >= 0; --i) {
+		for (int i = heapSize >> 1; i >= 0; --i) {
 			maxHeapify(a, i, heapSize);
 		}
 	}

@@ -55,8 +55,10 @@ public:
 	Status pushUp(Status l, Status r) {
 		//区间和 等于左右子区间和 的总和
 		int iSum = l.iSum + r.iSum;
+		//最大序列横跨右区间的一部分
 		//区间的最大左字段和 等于 max(左区间的最大左子段和，左区间的区间和+右区间的最大左字段和)
 		int lSum = max(l.lSum, l.iSum + r.lSum);
+		//最大序列横跨左区间的一部分
 		//区间的最大右字段和 等于 max(右区间最大右字段和， 右区间和+左区间的最大右字段和)
 		int rSum = max(r.rSum, r.iSum + l.rSum);
 		//最大字段和 横跨两个区间
@@ -70,8 +72,9 @@ public:
 		if (l == r) {
 			return Status{ nums[l], nums[l], nums[l], nums[l] };
 		}
-
+		//右移一位相当于/2
 		int m = (l + r) >> 1;
+		//分别求出两个区间的最大子区间和等信息
 		Status left = get(nums, l, m);
 		Status right = get(nums, m + 1, r);
 		return pushUp(left, right);

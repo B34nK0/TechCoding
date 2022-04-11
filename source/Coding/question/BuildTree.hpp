@@ -51,4 +51,16 @@ public:
 		return getChildren(preorder, inorder, 0, n - 1, 0, n - 1);
 	}
 
+	//后序输出树的节点
+	 void getPostOrder(TreeNode* root, vector<int>& node) {
+		 if (root == nullptr) {
+			 return;
+		 }
+		 //放置左子节点
+		 getPostOrder(root->left, node);
+		 //放置右子节点
+		 getPostOrder(root->right, node);
+		 //再放置当前节点
+		 node.emplace_back(root->val);
+	}
 };

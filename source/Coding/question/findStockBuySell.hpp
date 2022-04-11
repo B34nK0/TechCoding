@@ -40,6 +40,7 @@ public:
 		}
 
 		int n = prices.size();
+		//ถþฮฌสýื้
 		int** dp = new int*[n];
 		for (int i = 0; i < n; ++i) {
 			dp[i] = new int[2];
