@@ -92,6 +92,7 @@ select Sno from dbsc group by Sno having count(*)>3;
 
 4、建索引之后还是无法命中
 
+
 5、mysql为什么需要一个主键
 
 
@@ -101,6 +102,7 @@ select Sno from dbsc group by Sno having count(*)>3;
 6、hashmap 散列表
 
 7、解决hash冲突方法
+rehash、
 
 
 
