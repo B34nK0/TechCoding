@@ -32,10 +32,16 @@
 #include "niuke/huawei.hpp"
 #include "question/MyAtoi.hpp"
 #include "question/LFUCache.hpp"
+#include "interview/futu.hpp"
 
 using namespace std;
 
 int main() {
+
+	int yNum = RandY::GetRandNum();
+
+	bool b = RepeatedSubstringPattern::CheckIsRepeated("abaaba");
+
 
 	LFUCache lfuCache(1);
 	lfuCache.Put(10, 10);
