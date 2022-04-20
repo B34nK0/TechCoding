@@ -166,12 +166,54 @@ redis为什么性能优异？
 
 其单线程模式在于事件分发器采用单线程，而底层采用Reactor模式处理网络IO
 
+redist的有序集合键采用ziplist和skiplilst之一实现
+
 什么时候用ziplist、skiplist？
-1、当数据较少时，sorted set是由一个ziplist来实现的。
-2、当数据多的时候，sorted set是由一个叫zset的数据结构来实现的，这个zset包含一个dict + 一个skiplist。
+
+当有序集包含的元素数量比较多，又或者元素的成员时比较长的字符串时，redis采用zset（跳表来做底层实现）
+另外情况采用压缩列表ziplist，zset包含一个dict+一个skiplist
 dict用来查询数据到分数(score)的对应关系，而skiplist用来根据分数查询数据（可能是范围查找）。
 
+
+skiplist与平衡树、哈希表的对比：
+1、skiplist查找效率与平衡树一样O(logN)，而hashtable在保持第冲突率的情况下，O(1)
+2、skiplist插入节点只影响前后节点，而平衡树需要进行树调整
+3、skiplist实现比平衡树简单
+4、skiplist可以实现范围查询，而平衡树需要查找到小值的节点后进行中序查找不超过大值的节点，或者对平衡树改造成像mysql的b+tree，增加前后指针
+
+redis skiplist的特点
 skiplist支持平均O(logN)、最坏O(N)复杂度的节点查找
+
+skiplist新增节点时，采用随机层数的方式，只需要修改插入节点前后的指针即可，不需要对其他节点进行调整，比平衡树插入时的调整要少。
+一个节点有i+1层的概率为p，redis的p配置为1/4， 最大层数为32。
+
+节点结构
+typedef struct zskiplistNode{
+	//后退指针
+	struct zskiplistNode *backward;
+
+	//分值
+	double score;
+
+	//成员对象
+	rboj *obj;
+
+	//层
+	struct zskipllistLevel {
+		//前进指针
+		struct zskiplistNode *forward;
+		//跨度
+		unsigned int span;
+	} level[];
+
+}zskiplistNode;
+
+1、跨度用于记录两个节点之间的距离，查找某个节点过程中，将沿途访问过的跨度累计起乱来，即得到目标节点在链表中的排位
+2、forward用于倒排
+3、每个节点的分值时一个double的浮点数，用于排序，而成员对象obj指向一个字符串对象（SDS），相同分值的对象按对象大小升序（对应对象在dict中的升序）
+
+压缩列表ziplist为了节约内存开发，是一系列特殊编码的连续内存块组成的顺序型（sequential）数据结构，可以由任意多个节点（entry）组成，每个节点可以保存一个字节数组或一个整数值
+
 
 hash结构的扩缩容？
 redis的字典采用两个hashtale来存储数据，ht[0] ht[1],一般情况下 只使用ht[0], ht[1]用于rehash用
@@ -180,7 +222,7 @@ redis采用在键值增删改操作时，如果当前正在rehash状态，那么新增的值会直接操作到ht[
 当ht[0]的键值均搬到ht[1]后，释放ht[0]，将ht[1]设置为ht[0]，并在ht[1]重新创建一个hashtable
 
 雪花算法在k8s部署环境下如何保证唯一性？
-
+通过服务的ip获取对应的workid
 
 
 付款流程第三方超时
@@ -188,6 +230,7 @@ redis采用在键值增删改操作时，如果当前正在rehash状态，那么新增的值会直接操作到ht[
 分布式raft协议实现组件仓库的数据一致性
 
 高可用跟一致性
+AP、CP、BASE
 
 */
 
