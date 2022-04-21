@@ -31,7 +31,7 @@ public:
 
 	/*
 	leetCode 122
-	不能同时参与多笔交易
+	同时参与多笔交易
 	*/
 	//动态规划
 	static int SumBuySell(vector<int> prices) {

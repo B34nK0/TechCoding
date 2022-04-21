@@ -33,10 +33,14 @@
 #include "question/MyAtoi.hpp"
 #include "question/LFUCache.hpp"
 #include "interview/futu.hpp"
+#include "interview/byteDance.hpp"
 
 using namespace std;
 
 int main() {
+
+	vector<int> orignNums = { 1, 2, 5, 2, -1, 3, 1, 2 };
+	auto matchAns = FindMatchVector::GetVec(orignNums, 4);
 
 	int yNum = RandY::GetRandNum();
 

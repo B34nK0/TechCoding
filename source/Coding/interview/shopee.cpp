@@ -294,3 +294,50 @@ https建立链接过程
 tcpip协议栈 time_wait是如何产生的
 主动发起方在接收到被动方发起的fin之后进行time_wait并向被动方发送ack
 */
+
+template<typename DataType>
+//DataType是模板参数，代表了欲排序的数据类型 　　
+class QuickSortTemp
+{
+public:
+	QuickSortTemp() {}
+	~QuickSortTemp() {}
+public:
+	// 快速排序的实现，Array是要排序数据的数组，nLower，nUpper范围是0 ~ 数据总个数-1 　　 
+	static void QuickSort(DataType* Array, int nLower, int nUpper) {
+		// 测试是否排序完毕 　　 
+		if (nLower < nUpper) {
+			// 分解和分别进行排序 　　 
+			int nSplit = Partition(Array, nLower, nUpper);//数据切分为两个部分 　　 
+			QuickSort(Array, nLower, nSplit - 1);//左半部分递归排序 　　 
+			QuickSort(Array, nSplit + 1, nUpper);//右半部分递归排序 　　 
+		}
+	}
+	static int Partition(DataType* Array, int nLower, int nUpper) { 
+		int nLeft = nLower + 1;
+		DataType Pivot = Array[nLower];
+		int nRight = nUpper;
+		DataType Swap;
+		while (nLeft <= nRight) {
+			//轴值的左边应该比轴值小
+			while (nLeft <= nRight && Array[nLeft].CompareTo(Pivot) <= 0)
+				nLeft = nLeft + 1;
+			//轴值的右边应该比轴值大
+			while (nLeft <= nRight && Array[nRight].CompareTo(Pivot) > 0)
+				nRight = nRight - 1;
+			//交换两边数值
+			if (nLeft < nRight) { 
+				Swap = Array[nLeft];
+				Array[nLeft] = Array[nRight];
+				Array[nRight] = Swap;
+				nLeft = nLeft + 1;
+				nRight = nRight - 1;
+			}
+		}
+		//轴值位置
+		Swap = Array[nLower];
+		Array[nLower] = Array[nRight];
+		Array[nRight] = Swap;
+		return nRight;
+	}
+};
