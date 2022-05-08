@@ -34,10 +34,49 @@
 #include "question/LFUCache.hpp"
 #include "interview/futu.hpp"
 #include "interview/byteDance.hpp"
+#include "practice/SPSCQueue.hpp"
 
 using namespace std;
 
 int main() {
+
+	//采用64位内存对齐方式
+	alignas(64) std::atomic<int> _readPos;//缓冲区读位置
+
+	alignas(64) std::atomic<int> _writePos;//缓冲区写位置
+
+	size_t tes = sizeof(_writePos);
+
+	std::vector<double> _buffer;
+
+	size_t vetTest = sizeof(_buffer);
+
+	char _padding[64 - sizeof(_writePos)];
+
+	clock_t startTime = clock();
+
+	SPSCQueue<int>* spsc = new SPSCQueue<int>(10);
+
+	int popAns = 0;
+	spsc->push_back(1);
+	spsc->pop_front(popAns);
+
+	spsc->push_back(2);
+	spsc->pop_front(popAns);
+
+	spsc->push_back(3);
+	spsc->pop_front(popAns);
+
+	spsc->push_back(4);
+	spsc->pop_front(popAns);
+
+	spsc->push_back(5);
+	spsc->pop_front(popAns);
+
+	clock_t endTime = clock();
+
+
+	cout << "整个程序用时：" << double(endTime - startTime) << endl;
 
 	vector<int> orignNums = { 1, 2, 5, 2, -1, 3, 1, 2 };
 	auto matchAns = FindMatchVector::GetVec(orignNums, 4);

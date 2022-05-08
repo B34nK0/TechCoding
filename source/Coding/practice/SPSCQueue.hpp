@@ -7,13 +7,15 @@
 template <typename T>
 class SPSCQueue {
 private:
-    //采用64位内存对齐方式
+    //cacheline size为64位， 我们可采用64位内存对齐方式
     alignas(64) std::atomic<int> _readPos;//缓冲区读位置
 
     alignas(64) std::atomic<int> _writePos;//缓冲区写位置
 
+    //64 - 4,需要填充60位
     char _padding[64 - sizeof(_writePos)];
     //采用数组来存放队列数据
+    //32位
     std::vector<T> _buffer;
 
 private:
@@ -24,9 +26,9 @@ private:
     }
 public:
     SPSCQueue(int capacity) : _buffer(capacity + 1), _readPos(0), _writePos(0) {
-        assert(capacity > 0)
+        assert(capacity > 0);
         //capacity是个有符号值，存在溢出情况
-        assert(capacity + 1 > 0)
+        assert(capacity + 1 > 0);
     }
 
     bool push_back(const T &item) {
@@ -50,7 +52,7 @@ public:
         //当前线程顺序
         int r = _readPos.load(std::memory_order_relaxed);
         //保证其他线程在load之后的读写操作不会发生在load之前
-        int w = _writePos.load(std::memory_order_acquired);
+        int w = _writePos.load(std::memory_order_acquire);
 
         //队列为空  
         if (r == w) return false;
