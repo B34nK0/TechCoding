@@ -14,6 +14,7 @@ using namespace std;
 class ReverseKGroupList {
 public:
 	//返回反转后的头、尾节点位置
+	//可以使用tuple元组返回头尾节点
 	static pair<ListNode*, ListNode*> reverseSubList(ListNode* head, ListNode* tail) {
 		//将子链表尾节点的下一个节点作为当前的前节点
 		ListNode* prev = tail->next;
@@ -27,6 +28,19 @@ public:
 		}
 
 		return { tail, head };
+	}
+
+	static tuple<ListNode*, ListNode*> reverseList(ListNode* head, ListNode* tail) {
+		ListNode* prev = tail->next;
+		ListNode* curr = head;
+		while (prev != tail) {
+			ListNode* next = curr->next;
+			curr->next = prev;
+			prev = curr;
+			curr = next;
+		}
+		//反转之后，tail指向的是头结点，head指向尾节点，同时原先尾节点指向的下一个节点也接到了尾结点的下一节点
+		return make_tuple(tail, head);
 	}
 
 	static ListNode* Reverse(ListNode* head, int k) {
@@ -48,7 +62,12 @@ public:
 			//子链表尾直线的是下一个子链表，缓存起来用于开始下一次子链表
 			ListNode* next = tail->next;
 			//返回子列表的反转列表
-			tie(head, tail) = reverseSubList(head, tail);
+			//tie(head, tail) = reverseSubList(head, tail);
+
+			auto subListTuple = reverseList(head, tail);
+			head = std::get<0>(subListTuple);
+			tail = std::get<1>(subListTuple);
+
 			pre->next = head;
 			tail->next = next;
 			pre = tail;

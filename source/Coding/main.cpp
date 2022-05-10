@@ -35,10 +35,16 @@
 #include "interview/futu.hpp"
 #include "interview/byteDance.hpp"
 #include "practice/SPSCQueue.hpp"
+#include "question/ReverseKGroupList.hpp"
 
 using namespace std;
 
 int main() {
+
+	//
+	ListNode* reverseList1 = new ListNode(0, 5);
+	ReverseKGroupList::Reverse(reverseList1, 2);
+
 
 	//采用64位内存对齐方式
 	alignas(64) std::atomic<int> _readPos;//缓冲区读位置

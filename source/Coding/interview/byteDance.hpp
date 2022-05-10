@@ -74,7 +74,7 @@ threadlocal内存泄漏问题？一定会内存泄漏吗？
 kafka、rabbitmq
 
 为什么用rabbitmq
-
+rabbitmq支持多种语言
 
 rabbitmq高可用
 
@@ -127,7 +127,8 @@ redis 主从复制
 tcp 
 
 为什么存在time_wait状态
+主动方等待被动方收到了ack
 
 为什么要等待2个MSL
-
+msl是最大报文生存时间
 */
